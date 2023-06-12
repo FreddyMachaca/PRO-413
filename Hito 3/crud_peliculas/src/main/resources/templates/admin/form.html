@@ -13,7 +13,7 @@
 			enctype="multipart/form-data">
 			<div class="mb-3">
 				<label for="titulo" class="form-label">Paquete : </label> <input
-					type="text" id="titulo" placeholder="Digite el titulo"
+					type="text" id="titulo" placeholder="Digite el paquete"
 					class="form-control" th:field="*{titulo}">
 				<div class="invalid-feedback" th:if="${#fields.hasErrors('titulo')}"
 					th:errors="*{titulo}"></div>
@@ -21,7 +21,7 @@
 
 			<div class="mb-3">
 				<label for="sinopsis" class="form-label">Descripcion : </label>
-				<textarea id="sinopsis" placeholder="Digite la sinopsis"
+				<textarea id="sinopsis" placeholder="Digite la descripcion"
 					class="form-control" th:field="*{sinopsis}"></textarea>
 				<div class="invalid-feedback"
 					th:if="${#fields.hasErrors('sinopsis')}" th:errors="*{sinopsis}"></div>
@@ -30,7 +30,7 @@
 			<div class="mb-3">
 				<label for="fechaEstreno" class="form-label">Fecha
 					limite : </label> <input type="date" id="fechaEstreno"
-					placeholder="Digite la fecha de estreno" class="form-control"
+					placeholder="Digite la fecha limite" class="form-control"
 					th:field="*{fechaEstreno}">
 				<div class="invalid-feedback"
 					th:if="${#fields.hasErrors('fechaEstreno')}"
