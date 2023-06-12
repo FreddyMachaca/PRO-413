@@ -22,8 +22,7 @@ create table genero(
     titulo varchar(255)
 );
 
-insert into genero (titulo) values ('Vacaciones en clima cálido');
-insert into genero (titulo) values ('Tour de Aventura en la Selva');
-insert into genero (titulo) values ('Excursión en la Ciudad');
-insert into genero (titulo) values ('Retiro en la Montaña');
-insert into genero (titulo) values ('Experiencia Cultural');
+insert into genero (titulo) values ('Comedia');
+insert into genero (titulo) values ('Terror');
+insert into genero (titulo) values ('Acccion');
+insert into genero (titulo) values ('Animacion');
