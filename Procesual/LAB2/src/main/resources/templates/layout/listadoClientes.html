@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head>
+        <title>Listado Clientes</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <section th:fragment="listadoClientes" id="clientes">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-md-9">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>[[#{persona.titulo-lista}]]</h4>
+                            </div>
+                            <div th:if="${personas!=null && !personas.empty}">
+                                <table class="table table-striped">
+                                    <thead class="table-dark">
+                                        <tr>
+                                            <th>#</th>
+                                            <th>[[#{persona.nombre}]]</th>
+                                            <th>[[#{persona.saldo}]]</th>
+                                            <th>[[#{accion.ver}]]</th>
+                                            <th sec:authorize="hasRole('ROLE_ADMIN')">[[#{accion.editar}]]</th>
+                                            <th sec:authorize="hasRole('ROLE_ADMIN')">[[#{accion.eliminar}]]</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr th:each="persona, contador : ${personas}">
+                                            <td>[[${contador.count}]]</td>
+                                            <td>[[${persona.nombre} + ' ' + ${persona.apellido}]]</td>
+                                            <td>[[${new java.text.DecimalFormat('$#,##0.00').format(persona.saldo)}]]</td>
+                                            <td>
+                                                <a th:href="@{/ver/} + ${persona.idPersona}" class="btn btn-info text-white">
+                                                    <i class="fa-solid fa-eye"></i>
+                                                </a>
+                                            </td>
+                                            <td sec:authorize="hasRole('ROLE_ADMIN')">
+                                                <a th:href="@{/editar/} + ${persona.idPersona}" class="btn btn-secondary">
+                                                    <i class="fa-solid fa-pen-to-square"></i>
+                                                </a>
+                                            </td>
+                                            <td sec:authorize="hasRole('ROLE_ADMIN')">
+                                                <a th:href="@{/eliminar/} + ${persona.idPersona}" class="btn btn-danger">
+                                                    <i class="fa-solid fa-trash"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="text-center p-2" th:if="${personas==null || personas.empty}">
+                                <span th:text="#{persona.lista-vacia}"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="card text-center bg-danger text-white mb-3">
+                            <div class="card-body">
+                                <h3>[[#{persona.saldo-total}]]</h3>
+                                <h4 class="display-4">
+                                    [[${new java.text.DecimalFormat('$#,##0.00').format(saldoTotal)}]]
+                                </h4>
+                            </div>
+                        </div>
+
+                        <div class="card text-center bg-success text-white mb-3">
+                            <div class="card-body">
+                                <h3>[[#{persona.total-clientes}]]</h3>
+                                <h4 class="display-4">
+                                    <i class="fa-solid fa-users"></i> [[${totalClientes}]]
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </body>
+</html>

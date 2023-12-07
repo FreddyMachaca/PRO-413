@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head th:replace="layout/plantilla :: head">
+        <title>Ver</title>
+    </head>
+    <body>
+
+        <header th:replace="layout/plantilla :: header"></header>
+
+        <section th:replace="/layout/botonRegresar :: botonRegresar"></section>
+        
+        <section>
+            <div class="card mx-auto mt-5" style="width: 80%;">
+                <div class="card-header">
+                    [[#{accion.ver}]]
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Id: [[${persona.idPersona}]]</li>
+                    <li class="list-group-item">[[#{persona.nombre}]]: [[${persona.nombre}]]</li>
+                    <li class="list-group-item">[[#{persona.apellido}]]: [[${persona.apellido}]]</li>
+                    <li class="list-group-item">[[#{persona.email}]]: [[${persona.email}]]</li>
+                    <li class="list-group-item">[[#{persona.telefono}]]: [[${persona.telefono}]]</li>
+                    <li class="list-group-item">[[#{persona.saldo}]]: 
+                        [[${new java.text.DecimalFormat('$#,##0.00').format(persona.saldo)}]]</li>
+                </ul>
+            </div>
+        </section>
+
+        <footer th:replace="layout/plantilla :: footer"></footer>
+
+    </body>
+</html>

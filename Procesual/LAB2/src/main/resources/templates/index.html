@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<!--Hay que agregar el xml en la etiqueta html para poder manejar información dinámica (Thymeleaf)-->
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head th:replace="layout/plantilla :: head">
+        <title>Inicio</title>
+    </head>
+    <body>
+
+        <header th:replace="layout/plantilla :: header"></header>
+        <section th:replace="layout/botonesAgregar :: botonesAgregar"></section>
+        <section th:replace="layout/agregarCliente :: agregarCliente"></section>
+        <section th:replace="layout/listadoClientes :: listadoClientes"></section>
+        <footer th:replace="layout/plantilla :: footer"></footer>
+
+    </body>
+</html>
